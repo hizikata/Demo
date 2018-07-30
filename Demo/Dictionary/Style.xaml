@@ -18,7 +18,8 @@
                             </Grid.RowDefinitions>
                             <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" Height="4" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
+                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" CornerRadius="5"
+                                    Height="10" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
                                 <Canvas Margin="-6,-1">
                                     <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4" Visibility="Hidden"/>
                                 </Canvas>
@@ -64,11 +65,11 @@
                                 </Track.IncreaseRepeatButton>
                                 <Track.Thumb>
                                     <!--滑动按钮-->
-                                    <Thumb x:Name="Thumb" Focusable="False" Height="18" OverridesDefaultStyle="True" VerticalAlignment="Center" Width="11">
+                                    <Thumb x:Name="Thumb" Focusable="False" Height="18" OverridesDefaultStyle="True" VerticalAlignment="Center" Width="18">
                                         <Thumb.Template>
                                             <ControlTemplate TargetType="{x:Type Thumb}">
                                                 <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                                                    <Path x:Name="grip" Data="M0,0C0,0 11,0 11,0 11,0 11,18 11,18 11,18 0,18 0,18 0,18 0,0 0,0z" Fill="#FFF0F0F0" Stretch="Fill" SnapsToDevicePixels="True" Stroke="#FFACACAC" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+                                                    <Path x:Name="grip" Data="M 0,0 A 20,20 45 1 1 0,1 Z"  Fill="#FFF0F0F0" Stretch="Fill" SnapsToDevicePixels="True" Stroke="#FFACACAC" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
                                                 </Grid>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
@@ -318,5 +319,10 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
+    <!--主要字体样式-->
+    <Style x:Key="mainStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
 </ResourceDictionary>

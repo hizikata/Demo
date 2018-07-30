@@ -12,7 +12,7 @@
                             <ColumnDefinition Width="200*"/>
                             <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Foreground="{StaticResource FontColor}" FontSize="16"/>
+                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
                         <Slider Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False"  Maximum="1"
                                 Value="{Binding Progress}" Foreground="Red"/>
                         <TextBlock Grid.Column="2" Text="{Binding Progress}" Foreground="White" FontSize="16"/>
@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="200*"/>
                             <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Foreground="{StaticResource FontColor}" FontSize="16"/>
+                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
                         <Slider Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False"  Maximum="1"
                                 Value="{Binding Progress}" Foreground="Red"/>
                         <TextBlock Grid.Column="2" Text="{Binding Progress}" Foreground="White" FontSize="16"/>
@@ -42,19 +42,41 @@
     </DataTemplate>
     <DataTemplate x:Key="CLine">
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
+            <!--itemscontrol 控件模板-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <!--itemsControl 数据模板-->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="200*"/>
-                            <ColumnDefinition Width="60"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Foreground="{StaticResource FontColor}" FontSize="16"/>
-                        <Slider Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False"  Maximum="1"
-                                Value="{Binding Progress}" Foreground="Red"/>
-                        <TextBlock Grid.Column="2" Text="{Binding Progress}" Foreground="White" FontSize="16"/>
-                    </Grid>
+                    <Border x:Name="border" Width="120" Height="90" Margin="8"
+                            BorderBrush="{StaticResource FontColor}" BorderThickness="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="40*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding LineNum}" Style="{StaticResource mainStyle}" Margin="5,0"/>
+                                    <TextBlock Text="{Binding State}" Style="{StaticResource mainStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Rectangle x:Name="rect" Width="{Binding ElementName=border, Path=Width}"  
+                                           Height="30" Fill="White"
+                                           RadiusX="15" RadiusY="15" VerticalAlignment="Center"/>
+                                <Rectangle HorizontalAlignment="Left" RadiusX="15" RadiusY="15"
+                                           Height="{Binding ElementName=rect, Path=Height}" 
+                                           Width="60" VerticalAlignment="Center"
+                                           Fill="{Binding State, Converter={StaticResource stateColor}}"/>
+                                <Label     Height="26" VerticalContentAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Content="{Binding Progress}"
+                                           FontSize="15" Foreground="{Binding State,Converter={StaticResource stateColor}}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -69,7 +91,7 @@
                             <ColumnDefinition Width="200*"/>
                             <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Foreground="{StaticResource FontColor}" FontSize="16"/>
+                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
                         <Slider Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False"  Maximum="1"
                                 Value="{Binding Progress}" Foreground="Red"/>
                         <TextBlock Grid.Column="2" Text="{Binding Progress}" Foreground="White" FontSize="16"/>

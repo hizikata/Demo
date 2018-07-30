@@ -73,13 +73,13 @@
                 <view:ALineView Margin="20,0"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1">
-                <view:BLineView Margin="20,0"/>
+                <view:BLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0">
-                <view:CLineView/>
+                <view:CLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
-                <view:DLineView/>
+                <view:DLineView Margin="20,0" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

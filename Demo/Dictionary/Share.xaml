@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:con="clr-namespace:Demo.Converter"
                     xmlns:local="clr-namespace:Demo.Dictionary">
     <SolidColorBrush x:Key="FontColor" Color="#FF52ECFF"/>
-
+    <con:StateToColorConverter x:Key="stateColor"/>
 </ResourceDictionary>
