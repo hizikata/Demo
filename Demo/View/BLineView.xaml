@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="B线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-        <ContentControl Content="{Binding LineInfos}"/>
+        <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource BLine}"/>
         <!--<cc:BarChartControl Grid.Row="1" Height="300" Width="600" BorderBrush="White" BorderThickness="1,0,1,0" HeaderHeight="20" Margin="0,0,138,0">
             <cc:BarChartControl.AxisY>
                 <cc:AxisYModel Width="30" ForeGround="White">

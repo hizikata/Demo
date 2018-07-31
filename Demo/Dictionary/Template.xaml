@@ -28,6 +28,15 @@
     </DataTemplate>
     <DataTemplate x:Key="BLine">
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Width="600" Height="240">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="/Demo;component/Resources/BLine.png"/>
+                        </StackPanel.Background>
+                    </StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -36,10 +45,8 @@
                             <ColumnDefinition Width="200*"/>
                             <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
-                        <Slider Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False"  Maximum="1"
-                                Value="{Binding Progress}" Foreground="Red"/>
-                        <TextBlock Grid.Column="2" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
+                        <!--<TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
+                        <TextBlock Grid.Column="2" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>-->
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

@@ -8,5 +8,6 @@ namespace Demo.ViewModel
 {
     public class MainViewModel:ViewModelBase
     {
+
     }
 }
