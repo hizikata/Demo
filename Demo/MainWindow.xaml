@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:view="clr-namespace:Demo.View"
-        xmlns:local="clr-namespace:Demo"
+        xmlns:local="clr-namespace:Demo" WindowState="Maximized"
         WindowStartupLocation="CenterScreen" 
         mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True" 
         Title="MainWindow" Height="769" Width="1366">
@@ -22,6 +22,18 @@
             <Label HorizontalAlignment="Center" Width="600" Height="100" HorizontalContentAlignment="Center" 
                    Content="电子冲压车间设别运行状态" Foreground="{DynamicResource FontColor}"
                    FontSize="40"/>
+            <Button Name="btnClose" Click="btnClose_Click" HorizontalAlignment="Right" Width="30" Height="30" BorderBrush="Transparent"
+                    Background="Transparent" Margin="0,4,7.677,0" VerticalAlignment="Top">
+                <StackPanel>
+                    <Rectangle Fill="Transparent" StrokeThickness="2" Stroke="{StaticResource FontColor}" RadiusX="3" RadiusY="3"
+                       HorizontalAlignment="Right" Height="25" Width="25"/>
+                    <Path Data="M0,17 L10,13" Fill="Transparent" Height="16" Margin="-20" VerticalAlignment="top"
+                          Stretch="Fill" Stroke="{StaticResource FontColor}" StrokeThickness="2" Width="16"/>
+                    <Path Data="M0,4.25 L7.302,7.625" Fill="Transparent" Height="16.5" Margin="-20" VerticalAlignment="Top"
+                          Stretch="Fill" Stroke="{StaticResource FontColor}" StrokeThickness="2" Width="16.374"/>
+
+                </StackPanel>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -39,22 +51,22 @@
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="#FFA223A2" Margin="20,10,0,5" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="25" Fill="#FFA223A2" Margin="20,10,0,0" VerticalAlignment="Center"/>
                     <Label Content="停机" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="Orange" Margin="20,10,0,5" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="25" Fill="Orange" Margin="20,5,0,0" VerticalAlignment="Center"/>
                     <Label Content="空转" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="ForestGreen" Margin="5,10,0,5" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="25" Fill="ForestGreen" Margin="0,10,0,0" VerticalAlignment="Center"/>
                     <Label Content="正常运行" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="CornflowerBlue"  Margin="5,10,0,5" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="25" Fill="CornflowerBlue"  Margin="0,5,0,5" VerticalAlignment="Center"/>
                     <Label Content="设备空缺" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
@@ -70,7 +82,7 @@
                 <ColumnDefinition Width="400*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0">
-                <view:ALineView Margin="20,0"/>
+                <view:ALineView Margin="15,0,82,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="273" Width="546"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1">
                 <view:BLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>

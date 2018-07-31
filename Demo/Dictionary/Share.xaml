@@ -3,5 +3,8 @@
                     xmlns:con="clr-namespace:Demo.Converter"
                     xmlns:local="clr-namespace:Demo.Dictionary">
     <SolidColorBrush x:Key="FontColor" Color="#FF52ECFF"/>
+    <SolidColorBrush x:Key="bgBrush" Color="#FF1D273B"/>
     <con:StateToColorConverter x:Key="stateColor"/>
+    <con:ProgressToAngel x:Key="progressConverter"/>
+    <con:ProgressToWidth x:Key="progressToWidth"/>
 </ResourceDictionary>

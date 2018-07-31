@@ -5,15 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              xmlns:local="clr-namespace:Demo.View"
+             xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls"
              mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=BLine}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="200*"/>
+            <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="B线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-        
+        <ContentControl Content="{Binding LineInfos}"/>
+        <!--<cc:BarChartControl Grid.Row="1" Height="300" Width="600" BorderBrush="White" BorderThickness="1,0,1,0" HeaderHeight="20" Margin="0,0,138,0">
+            <cc:BarChartControl.AxisY>
+                <cc:AxisYModel Width="30" ForeGround="White">
+                    <cc:AxisYModel.Titles>
+                        <cc:AxisYDataModel Name="0" Value="0"></cc:AxisYDataModel>
+                        <cc:AxisYDataModel Name="20" Value="20"></cc:AxisYDataModel>
+                        <cc:AxisYDataModel Name="40" Value="40"></cc:AxisYDataModel>
+                        <cc:AxisYDataModel Name="60" Value="60"></cc:AxisYDataModel>
+                        <cc:AxisYDataModel Name="80" Value="80"></cc:AxisYDataModel>
+                        <cc:AxisYDataModel Name="100" Value="100"></cc:AxisYDataModel>
+                    </cc:AxisYModel.Titles>
+                </cc:AxisYModel>
+            </cc:BarChartControl.AxisY>
+            <cc:BarChartControl.AxisX>
+                <cc:AxisXModel Height="30" ForeGround="White">
+                    <cc:AxisXModel.Datas>
+                        <cc:AxisXDataModel Name="A" Value="100" FillBrush="DeepSkyBlue" FillEndBrush="#FF6CD7FB"/>
+                        <cc:AxisXDataModel Name="B" Value="50"  FillBrush="#FF06F906" FillEndBrush="#FF5CF95C"/>
+                        <cc:AxisXDataModel Name="C" Value="70"  FillBrush="Cyan" FillEndBrush="#FF4DFFFF"/>
+                        <cc:AxisXDataModel Name="D" Value="30" FillBrush="GreenYellow" FillEndBrush="#FFBFFD60"/>
+                        <cc:AxisXDataModel Name="E" Value="86" FillBrush="DarkOrchid" FillEndBrush="#FFCC73F7"/>
+                        <cc:AxisXDataModel Name="F" Value="60" FillBrush="Coral" FillEndBrush="#FFF9A181"/>
+                    </cc:AxisXModel.Datas>
+                </cc:AxisXModel>
+            </cc:BarChartControl.AxisX>
+        </cc:BarChartControl>-->
     </Grid>
 </UserControl>

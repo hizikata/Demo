@@ -7,15 +7,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-           
             <vm:ViewModelLocator x:Key="locator"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Dictionary/Share.xaml"/>
                 <ResourceDictionary Source="/Dictionary/Style.xaml"/>
                 <ResourceDictionary Source="/Dictionary/Template.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
-            
         </ResourceDictionary>
     </Application.Resources>
     
