@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{72E3EADC-23ED-4AC1-B1F9-7E95D2492520}</ProjectGuid>
+    <ProjectGuid>{D5411A2B-4CCD-414D-AD72-D03556109D33}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>CustomControls</RootNamespace>
     <AssemblyName>CustomControls</AssemblyName>
@@ -46,11 +46,19 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="BarChartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="BarChartControl.xaml.cs">
+      <DependentUpon>BarChartControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ColorPicker.cs" />
+    <Compile Include="ColorSlider.cs" />
     <Compile Include="CustomControl1.cs">
       <SubType>Code</SubType>
     </Compile>

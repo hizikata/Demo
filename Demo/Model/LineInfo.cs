@@ -20,6 +20,7 @@ namespace Demo.Model
         /// 进度
         /// </summary>
         public double Progress { get; set; }
+        public string ProgressPercent { get; set; }
         #endregion
         #region Constructors
         public LineInfo(string lineNum, string state, double progress)
@@ -27,14 +28,8 @@ namespace Demo.Model
             this.LineNum = lineNum;
             this.State = state;
             this.Progress = progress;
+            this.ProgressPercent = this.Progress.ToString("P0");
         }
         #endregion
-    }
-    public enum LineState
-    {
-        停机,
-        正常运转,
-        空转,
-        设备空缺
     }
 }
