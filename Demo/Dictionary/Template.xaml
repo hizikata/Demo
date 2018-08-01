@@ -30,24 +30,28 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Width="600" Height="240">
-                        <StackPanel.Background>
-                            <ImageBrush ImageSource="/Demo;component/Resources/BLine.png"/>
-                        </StackPanel.Background>
-                    </StackPanel>
+        
+                    
+                            <StackPanel  VerticalAlignment="Bottom" Width="600" Height="240" Orientation="Horizontal" Margin="10,0,10,0">
+                                <StackPanel.Background>
+                                    <ImageBrush ImageSource="/Demo;component/Resources/BLine.png"/>
+                                </StackPanel.Background>
+                            </StackPanel>
+      
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="200*"/>
-                            <ColumnDefinition Width="60"/>
-                        </Grid.ColumnDefinitions>
-                        <!--<TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
-                        <TextBlock Grid.Column="2" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>-->
-                    </Grid>
+
+                    <DockPanel Margin="32,0,0,13">
+                        <TextBlock DockPanel.Dock="Bottom"  Grid.Row="2" Grid.Column="1" Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
+                        <Rectangle DockPanel.Dock="Bottom" Grid.Row="1" Grid.Column="1" Width="30" Height="{Binding Progress, Converter={StaticResource proToHeigth}}" 
+                                   Fill="{Binding State, Converter={StaticResource stateColor}}" >
+                        </Rectangle>
+                        <TextBlock DockPanel.Dock="Bottom" Grid.Row="0" Grid.Column="1" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
+                        <TextBlock />
+                    </DockPanel>
+
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

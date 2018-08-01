@@ -34,4 +34,17 @@ namespace Demo.Converter
             throw new NotImplementedException();
         }
     }
+    public class ProgressToHeigth : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            double Heigth = (double)value;
+            return Heigth * 189; 
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

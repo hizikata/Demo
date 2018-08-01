@@ -25,7 +25,7 @@ namespace Demo.ViewModel
             LineInfos = new LineInfo[]
             {
                 new LineInfo("B01","停机",0.25),
-                new LineInfo("B02","正常运行",0.50),
+                new LineInfo("B02","正常运转",0.50),
                 new LineInfo("B03","空转",0.56),
                 new LineInfo("B04","设备空缺",0.85),
                 new LineInfo("B05","停机",0.25),

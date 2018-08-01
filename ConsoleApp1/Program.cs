@@ -9,9 +9,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            double a = 0.25;
-            Console.WriteLine(a.ToString("P0"));
-            Console.ReadKey();
+          
         }
     }
 }
