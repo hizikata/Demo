@@ -20,15 +20,16 @@
                             <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
                             
-                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" CornerRadius="5"
-                                    Height="10" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
+                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" CornerRadius="8"
+                                    Height="12" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
                                 <Canvas Margin="-6,-1">
                                     <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4" Visibility="Hidden"/>
                                 </Canvas>
                             </Border>
                             <!--添加一个有颜色的border-->
-                            <Border BorderThickness="1" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Color}" CornerRadius="5" HorizontalAlignment="Left" 
-                                    Height="10" Margin="5,0" Grid.Row="1" VerticalAlignment="Center" Width="30"/>
+                            <Border BorderThickness="1" CornerRadius="{Binding ElementName=TrackBackground, Path=CornerRadius}" HorizontalAlignment="Left"  
+                                    Background="{TemplateBinding Color}" Width="{TemplateBinding ColorWidth}"
+                                    Height="{Binding ElementName=TrackBackground, Path=Height}" Margin="5,0" Grid.Row="1" VerticalAlignment="Center"/>
                             <Track x:Name="PART_Track" Grid.Row="1">
                                 <Track.DecreaseRepeatButton>
                                     <RepeatButton Command="Slider.DecreaseLarge">
@@ -41,7 +42,7 @@
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                                            <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                                                            <Rectangle Fill="{TemplateBinding Background}"  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
                                                         </ControlTemplate>
                                                     </Setter.Value>
                                                 </Setter>
@@ -70,11 +71,23 @@
                                 </Track.IncreaseRepeatButton>
                                 <Track.Thumb>
                                     <!--滑动按钮-->
-                                    <Thumb x:Name="Thumb" Focusable="False" Height="18" OverridesDefaultStyle="True" VerticalAlignment="Center" Width="18">
+                                    <Thumb x:Name="Thumb" Focusable="False" Height="24" Width="24" OverridesDefaultStyle="True" VerticalAlignment="Center" 
+                                           >
                                         <Thumb.Template>
                                             <ControlTemplate TargetType="{x:Type Thumb}">
                                                 <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                                                    <Path x:Name="grip" Data="M 0,0 A 20,20 45 1 1 0,1 Z"  Fill="#FFF0F0F0" Stretch="Fill" SnapsToDevicePixels="True" Stroke="#FFACACAC" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+                                                    <Path x:Name="grip" Data="M 0,0 A 20,20 45 1 1 0,1 Z"  Stretch="Fill" SnapsToDevicePixels="True" 
+                                                          Stroke="#fffcfcfc" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center">
+                                                        <Path.Fill>
+                                                            <LinearGradientBrush>
+                                                                <GradientStopCollection>
+                                                                    <GradientStop Offset="0" Color="Red"/>
+                                                                    <GradientStop Offset="0.5" Color="Yellow"/>
+                                                                    <GradientStop Offset="1" Color="Green"/>
+                                                                </GradientStopCollection>
+                                                            </LinearGradientBrush>
+                                                        </Path.Fill>
+                                                    </Path>
                                                 </Grid>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">

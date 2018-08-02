@@ -82,16 +82,17 @@
                 <ColumnDefinition Width="400*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0">
-                <view:ALineView Margin="15,0,82,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="273" Width="546"/>
+                <view:ALineView Margin="15,15,82,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="273" Width="546"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1">
                 <view:BLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0">
-                <view:CLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <view:CLineView Margin="40,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
-                <view:DLineView Margin="20,0" HorizontalAlignment="Center"/>
+                <view:DLineView  HorizontalAlignment="Center" Width="595"  VerticalAlignment="Center"
+                                 Margin="-20,20,0,0"/>
             </Grid>
         </Grid>
     </Grid>

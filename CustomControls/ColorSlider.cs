@@ -15,21 +15,29 @@ namespace CustomControls
         #region Fields
         //依赖项属性设置是否可用绑定
         public static readonly DependencyProperty ColorProperty;
+        public static readonly DependencyProperty ColorWidthProperty;
 
         #endregion
         #region Properties
-        public Color Color
+        public Brush Color
         {
-            get {return (Color) GetValue(ColorProperty); }
+            get {return (Brush) GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
+        }
+        public Double ColorWidth
+        {
+            get { return (Double)GetValue(ColorWidthProperty); }
+            set { SetValue(ColorWidthProperty, value); }
         }
         #endregion
         #region Constructors
         static ColorSlider()
         {
-            FrameworkPropertyMetadata metadata = new FrameworkPropertyMetadata(Colors.Red);
-            ColorProperty = DependencyProperty.Register("Color", typeof(Color), typeof(ColorSlider),
+            FrameworkPropertyMetadata metadata = new FrameworkPropertyMetadata(new SolidColorBrush(Colors.Blue));
+            ColorProperty = DependencyProperty.Register("Color", typeof(Brush), typeof(ColorSlider),
                 metadata);
+            ColorWidthProperty = DependencyProperty.Register("ColorWidth", typeof(Double), typeof(ColorSlider),
+                new FrameworkPropertyMetadata(100.0));
         }
         #endregion
     }

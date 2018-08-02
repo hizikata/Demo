@@ -26,20 +26,15 @@ namespace Demo.Converter
         {
             //parameter??
             double progress = (double)value;
-            return progress * 120;
-        }
+            if (parameter != null)
+            {
+                double.TryParse(parameter.ToString(), out double coe);
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class ProgressToHeigth : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            double Heigth = (double)value;
-            return Heigth * 189; 
+                return progress * coe;
+            }
+            else
+                return progress;
+            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

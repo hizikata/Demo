@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Demo.View"
-             mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=ALine}"
+             mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=ALine}" Height="309"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -14,6 +14,6 @@
         <Label Grid.Row="0" Content="A线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
         <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource ALine}"
-                        MinWidth="400"/>
+                        MinWidth="400" Height="300" />
     </Grid>
 </UserControl>

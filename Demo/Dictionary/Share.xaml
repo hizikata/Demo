@@ -7,5 +7,4 @@
     <con:StateToColorConverter x:Key="stateColor"/>
     <con:ProgressToAngel x:Key="progressConverter"/>
     <con:ProgressToWidth x:Key="progressToWidth"/>
-    <con:ProgressToHeigth x:Key="proToHeigth"/>
 </ResourceDictionary>
