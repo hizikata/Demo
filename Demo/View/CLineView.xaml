@@ -6,6 +6,50 @@
              xmlns:local="clr-namespace:Demo.View"
              mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=CLine}"
              >
+    <UserControl.Resources>
+        <!--listview 样式-->
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+        </Style>
+        <!--listview 样式-->
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style TargetType="{x:Type ListViewItem}" x:Key="listViewItemStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="200*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="{StaticResource FontColor}" BorderThickness="1">
+                                <TextBlock Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="{StaticResource FontColor}" BorderThickness="1">
+                                <Grid Name="grid" Height="26">
+                                    <Rectangle x:Name="rect" Width="195" Height="24" Fill="White" HorizontalAlignment="Left"
+                               RadiusX="12" RadiusY="12" VerticalAlignment="Center"/>
+                                    <Rectangle HorizontalAlignment="Left" RadiusX="{Binding ElementName=rect, Path=RadiusX}" RadiusY="{Binding ElementName=rect, Path=RadiusX}"
+                               Height="{Binding ElementName=rect, Path=Height}" 
+                               Width="{Binding Progress, Converter={StaticResource progressToWidth}, ConverterParameter=195}"  VerticalAlignment="Center"
+                               Fill="{Binding State, Converter={StaticResource stateColor}}"/>
+                                    <Label     Height="24" VerticalContentAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Content="{Binding ProgressPercent}"
+                               FontSize="13" Foreground="Black" Margin="0,0,16,0"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="{StaticResource FontColor}" BorderThickness="1">
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding State}" FontSize="16" Foreground="{Binding State,Converter={StaticResource stateColor}}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -13,7 +57,16 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="C线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-        <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource CLine}"
-                        Width="650"/>
+        <ListView Grid.Row="1" ItemsSource="{Binding LineInfos}">
+            <ListView.View>
+                <GridView >
+                    <GridView.Columns>
+                        <GridViewColumn Header="线号" CellTemplate="{StaticResource CLineLineNum}"/>
+                        <GridViewColumn Header="进度" CellTemplate="{StaticResource CLineProgress}"/>
+                        <GridViewColumn Header="状态" CellTemplate="{StaticResource CLineState}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

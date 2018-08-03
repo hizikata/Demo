@@ -51,22 +51,22 @@
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="#FFA223A2" Margin="20,10,0,0" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="20" Fill="#FFA223A2" Margin="20,10,0,0" VerticalAlignment="Center"/>
                     <Label Content="停机" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="Orange" Margin="20,5,0,0" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="20" Fill="Orange" Margin="20,5,0,0" VerticalAlignment="Center"/>
                     <Label Content="空转" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="ForestGreen" Margin="0,10,0,0" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="20" Fill="ForestGreen" Margin="0,10,0,0" VerticalAlignment="Center"/>
                     <Label Content="正常运行" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                    <Rectangle Width="60" Height="25" Fill="CornflowerBlue"  Margin="0,5,0,5" VerticalAlignment="Center"/>
+                    <Rectangle Width="60" Height="20" Fill="CornflowerBlue"  Margin="0,5,0,5" VerticalAlignment="Center"/>
                     <Label Content="设备空缺" VerticalAlignment="Center" 
                            Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
