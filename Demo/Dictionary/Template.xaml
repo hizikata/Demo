@@ -3,7 +3,7 @@
                     xmlns:ex="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:dw="http://schemas.microsoft.com/expression/2010/drawing"
                     xmlns:cusContruls="clr-namespace:CustomControls;assembly=CustomControls"
-                    xmlns:local="clr-namespace:Demo.Dictionary">
+                    xmlns:local="clr-namespace:Demo.Dictionary" xmlns:System="clr-namespace:System;assembly=mscorlib">
     <DataTemplate x:Key="ALine">
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
             <ItemsControl.ItemTemplate>
@@ -15,8 +15,8 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}" />
-                        <cusContruls:ColorSlider Name="colorSlider" Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False" 
-                                                 ColorWidth="{Binding Progress, Converter={StaticResource progressToWidth}, ConverterParameter=430}"
+                        <cusContruls:ColorSlider x:Name="colorSlider" Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False" 
+                                                 ColorWidth="{Binding Progress, ConverterParameter=430, Converter={StaticResource progressToWidth}}"
                                                  Width="450" Maximum="1" Value="{Binding Progress}" Color="{Binding State, Converter={StaticResource stateColor}}"/>
 
                         <TextBlock Grid.Column="2" Text="{Binding ProgressPercent}" FontSize="16"                             
@@ -30,17 +30,15 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel  VerticalAlignment="Bottom" Width="600" Height="300" Orientation="Horizontal" Margin="10,0,10,0">
-                    </StackPanel>
+                    <StackPanel  VerticalAlignment="Bottom" Width="600" Height="300" Orientation="Horizontal" Margin="10,0,10,0"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Margin="40,0,0,14">
                         <TextBlock DockPanel.Dock="Bottom"  Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
-                        <Rectangle DockPanel.Dock="Bottom"  Width="30" Height="{Binding Progress, Converter={StaticResource progressToWidth}, ConverterParameter=228}" 
-                                   Fill="{Binding State, Converter={StaticResource stateColor}}" >
-                        </Rectangle>
+                        <Rectangle DockPanel.Dock="Bottom"  Width="30" Height="{Binding Progress, ConverterParameter=228, Converter={StaticResource progressToWidth}}" 
+                                   Fill="{Binding State, Converter={StaticResource stateColor}}" />
                         <TextBlock DockPanel.Dock="Bottom" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
                         <TextBlock />
                     </DockPanel>
@@ -55,12 +53,12 @@
     </DataTemplate>
     <DataTemplate x:Key="CLineProgress">
         <Border BorderBrush="{StaticResource FontColor}" BorderThickness="1">
-            <Grid Name="grid" Height="26">
+            <Grid x:Name="grid" Height="26">
                 <Rectangle x:Name="rect" Width="195" Height="24" Fill="White" HorizontalAlignment="Left"
                                RadiusX="12" RadiusY="12" VerticalAlignment="Center"/>
-                <Rectangle HorizontalAlignment="Left" RadiusX="{Binding ElementName=rect, Path=RadiusX}" RadiusY="{Binding ElementName=rect, Path=RadiusX}"
-                               Height="{Binding ElementName=rect, Path=Height}" 
-                               Width="{Binding Progress, Converter={StaticResource progressToWidth}, ConverterParameter=195}"  VerticalAlignment="Center"
+                <Rectangle HorizontalAlignment="Left" RadiusX="{Binding RadiusX, ElementName=rect}" RadiusY="{Binding RadiusX, ElementName=rect}"
+                               Height="{Binding Height, ElementName=rect}" 
+                               Width="{Binding Progress, ConverterParameter=195, Converter={StaticResource progressToWidth}}"  VerticalAlignment="Center"
                                Fill="{Binding State, Converter={StaticResource stateColor}}"/>
                 <Label     Height="24" VerticalContentAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Content="{Binding ProgressPercent}"
                                FontSize="13" Foreground="Black" Margin="0,0,16,0"/>
@@ -69,7 +67,7 @@
     </DataTemplate>
     <DataTemplate x:Key="CLineState">
         <Border BorderBrush="{StaticResource FontColor}" BorderThickness="2">
-            <TextBlock HorizontalAlignment="Center" Text="{Binding State}" FontSize="16" Foreground="{Binding State,Converter={StaticResource stateColor}}"/>
+            <TextBlock HorizontalAlignment="Center" Text="{Binding State}" FontSize="16" Foreground="{Binding State, Converter={StaticResource stateColor}}"/>
         </Border>
     </DataTemplate>
     <!--<DataTemplate x:Key="CLine">
@@ -130,8 +128,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="8">
-                        <Border Name="MaxCircle" CornerRadius="360" Width="110" Height="110" Background="White"  Opacity="0.2"/>
-                        <Border Name="minCircle" CornerRadius="360" Width="105" Height="105" BorderBrush="black" BorderThickness="2" 
+                        <Border x:Name="MaxCircle" CornerRadius="360" Width="110" Height="110" Background="White"  Opacity="0.2"/>
+                        <Border x:Name="minCircle" CornerRadius="360" Width="105" Height="105" BorderBrush="black" BorderThickness="2" 
                                 Opacity="0.4" RenderTransformOrigin="0.5,0.5" Background="{StaticResource bgBrush}">
                             <Border.RenderTransform>
                                 <TransformGroup>
@@ -149,10 +147,10 @@
                                 </LinearGradientBrush>
                             </Border.Background>-->
                         </Border>
-                        <dw:Arc Name="FillArea" ArcThickness="0.2" ArcThicknessUnit="Percent" Width="85" Height="85" 
+                        <dw:Arc x:Name="FillArea" ArcThickness="0.2" ArcThicknessUnit="Percent" Width="85" Height="85" 
                                     StartAngle="0" EndAngle="{Binding Progress, Converter={StaticResource progressConverter}}" 
                                 Stretch="None" Fill="{Binding State, Converter={StaticResource stateColor}}"/>
-                        <dw:Arc Name="ShowArea" ArcThickness="0.05"  ArcThicknessUnit="Percent"
+                        <dw:Arc x:Name="ShowArea" ArcThickness="0.05"  ArcThicknessUnit="Percent"
                                     StartAngle="0" EndAngle="360" Width="90" Height="90" Stretch="None" Opacity="0.5" RenderTransformOrigin="0.5,0.5">
                             <dw:Arc.RenderTransform>
                                 <TransformGroup>
@@ -171,7 +169,7 @@
                             </dw:Arc.Fill>
                         </dw:Arc>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Label Name="ShowLabel" FontFamily="宋体" FontWeight="Bold" Content="{Binding ProgressPercent}"
+                            <Label x:Name="ShowLabel" FontFamily="宋体" FontWeight="Bold" Content="{Binding ProgressPercent}"
                                FontSize="20" Foreground="White" Opacity="0.8" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                             <Label Content="{Binding LineNum}" Foreground="{StaticResource FontColor}" FontSize="16"
                                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -181,5 +179,29 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </DataTemplate>
+    <ControlTemplate x:Key="ListBoxControlTemplate1" TargetType="{x:Type ListBox}">
+        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="True">
+            <ScrollViewer Focusable="False" Padding="{TemplateBinding Padding}">
+                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </ScrollViewer>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" TargetName="Bd" Value="White"/>
+                <Setter Property="BorderBrush" TargetName="Bd" Value="#FFD9D9D9"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsGrouping" Value="True"/>
+                    <Condition>
+                        <Condition.Value>
+                            <System:Boolean>False</System:Boolean>
+                        </Condition.Value>
+                    </Condition>
+                </MultiTrigger.Conditions>
+                <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>
     
