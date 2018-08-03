@@ -88,7 +88,7 @@
                 <view:BLineView Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0">
-                <view:CLineView Margin="40,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <view:CLineView Margin="50.5,20,108.5,0" HorizontalAlignment="Center" Width="484"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
                 <view:DLineView  HorizontalAlignment="Center" Width="595"  VerticalAlignment="Center"

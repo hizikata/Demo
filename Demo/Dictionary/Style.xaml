@@ -343,4 +343,35 @@
         <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
+
+
+    <ControlTemplate x:Key="GridViewColumnHeaderControlTemplate1" TargetType="{x:Type GridViewColumnHeader}">
+        <Border x:Name="HeaderBorder" BorderBrush="Transparent" BorderThickness="0" Padding="0"
+                Background="{TemplateBinding Background}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Border Padding="3" Grid.Column="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="线号" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Padding="3" Grid.Column="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="进度" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Padding="3" Grid.Column="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="状态" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Height" Value="Auto">
+                <Setter Property="MinHeight" Value="20"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+        <VirtualizingStackPanel IsItemsHost="True"/>
+    </ItemsPanelTemplate>
 </ResourceDictionary>
