@@ -8,16 +8,16 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="450*"/>
+                            <ColumnDefinition Width="680"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}" />
+                        <TextBlock  Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}" />
                         <cusContruls:ColorSlider x:Name="colorSlider" Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False" 
-                                                 ColorWidth="{Binding Progress, ConverterParameter=430, Converter={StaticResource progressToWidth}}"
-                                                 Width="450" Maximum="1" Value="{Binding Progress}" Color="{Binding State, Converter={StaticResource stateColor}}"/>
+                                                 Width="680" ColorWidth="{Binding Progress, ConverterParameter=680, Converter={StaticResource progressToWidth}}"
+                                                 Maximum="1" Value="{Binding Progress}" Color="{Binding State, Converter={StaticResource stateColor}}"/>
 
                         <TextBlock Grid.Column="2" Text="{Binding ProgressPercent}" FontSize="16"                             
                                    Foreground="White"/>
@@ -30,18 +30,40 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel  VerticalAlignment="Bottom" Width="600" Height="300" Orientation="Horizontal" Margin="10,0,10,0"/>
+
+                    <StackPanel  VerticalAlignment="Bottom" Width="600" Height="300" Orientation="Horizontal" Margin="10,0,10,0">
+                        <!--<Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="60*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="300*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>-->
+                    </StackPanel>
+
+
+
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Margin="40,0,0,14">
-                        <TextBlock DockPanel.Dock="Bottom"  Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
-                        <Rectangle DockPanel.Dock="Bottom"  Width="30" Height="{Binding Progress, ConverterParameter=228, Converter={StaticResource progressToWidth}}" 
+                    <Grid>
+                        <DockPanel Margin="40,0,0,14">
+                            <TextBlock DockPanel.Dock="Bottom"  Text="{Binding LineNum}" Style="{StaticResource mainStyle}"/>
+                            <Rectangle DockPanel.Dock="Bottom"  Width="30" Height="{Binding Progress, ConverterParameter=228, Converter={StaticResource progressToWidth}}" 
                                    Fill="{Binding State, Converter={StaticResource stateColor}}" />
-                        <TextBlock DockPanel.Dock="Bottom" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
-                        <TextBlock />
-                    </DockPanel>
+                            <TextBlock DockPanel.Dock="Bottom" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
+                            <TextBlock />
+                        </DockPanel>
+                    </Grid>
+
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -127,7 +149,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="8">
+                    <Grid Margin="30,10">
                         <Border x:Name="MaxCircle" CornerRadius="360" Width="110" Height="110" Background="White"  Opacity="0.2"/>
                         <Border x:Name="minCircle" CornerRadius="360" Width="105" Height="105" BorderBrush="black" BorderThickness="2" 
                                 Opacity="0.4" RenderTransformOrigin="0.5,0.5" Background="{StaticResource bgBrush}">
@@ -179,6 +201,8 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </DataTemplate>
+    
+    <!-- ListBox 模板-->
     <ControlTemplate x:Key="ListBoxControlTemplate1" TargetType="{x:Type ListBox}">
         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="True">
             <ScrollViewer Focusable="False" Padding="{TemplateBinding Padding}">
@@ -203,5 +227,39 @@
             </MultiTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
+    <ControlTemplate x:Key="GridViewColumnHeaderControlTemplate1" TargetType="{x:Type GridViewColumnHeader}">
+        <Border x:Name="HeaderBorder" BorderBrush="Transparent" BorderThickness="0" Padding="0"
+                Background="{TemplateBinding Background}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Border Padding="3" Grid.Column="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="线号" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Padding="3" Grid.Column="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="进度" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Padding="3" Grid.Column="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="图示"  Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Padding="3" Grid.Column="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
+                    <TextBlock Text="状态" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Height" Value="Auto">
+                <Setter Property="MinHeight" Value="20"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+        <VirtualizingStackPanel IsItemsHost="True"/>
+    </ItemsPanelTemplate>
 </ResourceDictionary>
     

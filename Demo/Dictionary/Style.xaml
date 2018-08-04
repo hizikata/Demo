@@ -20,8 +20,8 @@
                             <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
                             
-                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" CornerRadius="8"
-                                    Height="12" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
+                            <Border x:Name="TrackBackground" BorderBrush="#FFD6D6D6" BorderThickness="1" Background="#FFE7EAEA" CornerRadius="10"
+                                    Height="24" Margin="5,0" Grid.Row="1" VerticalAlignment="Center">
                                 <Canvas Margin="-6,-1">
                                     <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4" Visibility="Hidden"/>
                                 </Canvas>
@@ -71,7 +71,7 @@
                                 </Track.IncreaseRepeatButton>
                                 <Track.Thumb>
                                     <!--滑动按钮-->
-                                    <Thumb x:Name="Thumb" Focusable="False" Height="24" Width="24" OverridesDefaultStyle="True" VerticalAlignment="Center" 
+                                    <Thumb x:Name="Thumb" Focusable="False" Height="36" Width="36" OverridesDefaultStyle="True" VerticalAlignment="Center" 
                                            >
                                         <Thumb.Template>
                                             <ControlTemplate TargetType="{x:Type Thumb}">
@@ -341,37 +341,9 @@
     <!--主要textblock样式-->
     <Style x:Key="mainStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="20"/>
     </Style>
 
 
-    <ControlTemplate x:Key="GridViewColumnHeaderControlTemplate1" TargetType="{x:Type GridViewColumnHeader}">
-        <Border x:Name="HeaderBorder" BorderBrush="Transparent" BorderThickness="0" Padding="0"
-                Background="{TemplateBinding Background}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="200*"/>
-                    <ColumnDefinition Width="100"/>
-                </Grid.ColumnDefinitions>
-                <Border Padding="3" Grid.Column="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
-                    <TextBlock Text="线号" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
-                </Border>
-                <Border Padding="3" Grid.Column="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
-                    <TextBlock Text="进度" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
-                </Border>
-                <Border Padding="3" Grid.Column="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
-                    <TextBlock Text="状态" Style="{StaticResource mainStyle}" HorizontalAlignment="Center"/>
-                </Border>
-            </Grid>
-        </Border>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Height" Value="Auto">
-                <Setter Property="MinHeight" Value="20"/>
-            </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-    <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
-        <VirtualizingStackPanel IsItemsHost="True"/>
-    </ItemsPanelTemplate>
+    
 </ResourceDictionary>

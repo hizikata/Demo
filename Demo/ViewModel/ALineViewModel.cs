@@ -23,14 +23,14 @@ namespace Demo.ViewModel
         {
             LineInfos = new LineInfo[]
             {
-                new LineInfo("A01","停机",0.25),
+                new LineInfo("A01","停机",0.05),
                 new LineInfo("A02","正常运转",0.50),
                 new LineInfo("A03","空转",0.56),
                 new LineInfo("A04","设备空缺",0.85),
                 new LineInfo("A05","停机",0.25),
                 new LineInfo("A06","正常运转",0.63),
                 new LineInfo("A07","空转",0.21),
-                new LineInfo("A08","设备空缺",0.89)
+                new LineInfo("A08","设备空缺",0.99)
             };
         }
 

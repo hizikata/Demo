@@ -4,47 +4,89 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-             xmlns:local="clr-namespace:Demo.View"
+             xmlns:local="clr-namespace:Demo.View" Width="760" Height="380"
              xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls"
              mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=BLine}"
-             d:DesignHeight="450" d:DesignWidth="896">
-    <UserControl.Background>
-        <ImageBrush ImageSource="/Demo;component/Resources/BLine.jpg"/>
-    </UserControl.Background>
-
+             >
+    <UserControl.Resources>
+        <!--listViewItem模板-->
+        <Style TargetType="ListViewItem" x:Key="ClineListViewItme">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel Margin="25,0,25,0">
+                            <TextBlock DockPanel.Dock="Bottom"  Text="{Binding LineNum}" Style="{StaticResource mainStyle}" Height="60"/>
+                            <Rectangle DockPanel.Dock="Bottom"  Width="30" Height="{Binding Progress, ConverterParameter=260, Converter={StaticResource progressToWidth}}" 
+                                   Fill="{Binding State, Converter={StaticResource stateColor}}" />
+                            <TextBlock DockPanel.Dock="Bottom" Text="{Binding ProgressPercent}" Foreground="White" FontSize="16"/>
+                            <TextBlock />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel IsItemsHost="True" Orientation="Horizontal"
+                                    >
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="B线生产进度" FontSize="30"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Content="B线生产进度" FontSize="30" Grid.ColumnSpan="2"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-        <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource BLine}" Margin="0,0,0,123" Height="277" VerticalAlignment="Bottom"/>
-        <!--<cc:BarChartControl Grid.Row="1" Height="300" Width="600" BorderBrush="White" BorderThickness="1,0,1,0" HeaderHeight="20" Margin="0,0,138,0">
-            <cc:BarChartControl.AxisY>
-                <cc:AxisYModel Width="30" ForeGround="White">
-                    <cc:AxisYModel.Titles>
-                        <cc:AxisYDataModel Name="0" Value="0"></cc:AxisYDataModel>
-                        <cc:AxisYDataModel Name="20" Value="20"></cc:AxisYDataModel>
-                        <cc:AxisYDataModel Name="40" Value="40"></cc:AxisYDataModel>
-                        <cc:AxisYDataModel Name="60" Value="60"></cc:AxisYDataModel>
-                        <cc:AxisYDataModel Name="80" Value="80"></cc:AxisYDataModel>
-                        <cc:AxisYDataModel Name="100" Value="100"></cc:AxisYDataModel>
-                    </cc:AxisYModel.Titles>
-                </cc:AxisYModel>
-            </cc:BarChartControl.AxisY>
-            <cc:BarChartControl.AxisX>
-                <cc:AxisXModel Height="30" ForeGround="White">
-                    <cc:AxisXModel.Datas>
-                        <cc:AxisXDataModel Name="A" Value="100" FillBrush="DeepSkyBlue" FillEndBrush="#FF6CD7FB"/>
-                        <cc:AxisXDataModel Name="B" Value="50"  FillBrush="#FF06F906" FillEndBrush="#FF5CF95C"/>
-                        <cc:AxisXDataModel Name="C" Value="70"  FillBrush="Cyan" FillEndBrush="#FF4DFFFF"/>
-                        <cc:AxisXDataModel Name="D" Value="30" FillBrush="GreenYellow" FillEndBrush="#FFBFFD60"/>
-                        <cc:AxisXDataModel Name="E" Value="86" FillBrush="DarkOrchid" FillEndBrush="#FFCC73F7"/>
-                        <cc:AxisXDataModel Name="F" Value="60" FillBrush="Coral" FillEndBrush="#FFF9A181"/>
-                    </cc:AxisXModel.Datas>
-                </cc:AxisXModel>
-            </cc:BarChartControl.AxisX>
-        </cc:BarChartControl>-->
+        <!--<ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource BLine}" Margin="0,0,0,123" Height="277" VerticalAlignment="Bottom"/>-->
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="300*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="100%" Margin="0,0,0,40" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="80%" Margin="0,0,0,10" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="60%" Margin="0,0,0,10" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="40%" Margin="0,0,0,10" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="20%" Margin="0,0,0,10" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="0%" Margin="0,0,0,10" Grid.RowSpan="2" 
+                       VerticalAlignment="Center"  Foreground="White" FontSize="20"/>
+            <Border Grid.Row="1" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+            <Border Grid.Row="2" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+            <Border Grid.Row="3" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+            <Border Grid.Row="4" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+            <Border Grid.Row="5" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+            <Border Grid.Row="6" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="White"/>
+        </Grid>
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding LineInfos}" 
+                  ItemContainerStyle="{StaticResource ClineListViewItme}"
+                  BorderBrush="Transparent" Margin="0,0,0,-20"/>
+
     </Grid>
 </UserControl>

@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Demo.View"
-             mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=ALine}" Height="309"
+             xmlns:local="clr-namespace:Demo.View" MinWidth="760" MinHeight="400"
+             mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=ALine}"           
              >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="200*"/>
+            <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="A线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
         <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource ALine}"
-                        MinWidth="400" Height="300" />
+                        MinWidth="400" />
     </Grid>
 </UserControl>
