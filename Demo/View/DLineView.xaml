@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Demo.View" 
              mc:Ignorable="d" DataContext="{Binding Source={StaticResource locator}, Path=DLine}" 
-             Width="760" Height="400"
+             Width="760" Height="500"
              >
     <Grid>
         <Grid.RowDefinitions>

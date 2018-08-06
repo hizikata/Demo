@@ -11,7 +11,7 @@
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="680"/>
+                            <ColumnDefinition Width="685"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock  Grid.Column="0" Text="{Binding LineNum}" Style="{StaticResource mainStyle}" />
@@ -150,8 +150,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="30,10">
-                        <Border x:Name="MaxCircle" CornerRadius="360" Width="110" Height="110" Background="White"  Opacity="0.2"/>
-                        <Border x:Name="minCircle" CornerRadius="360" Width="105" Height="105" BorderBrush="black" BorderThickness="2" 
+                        <Border x:Name="MaxCircle" CornerRadius="360" Width="130" Height="130" Background="White"  Opacity="0.2"/>
+                        <Border x:Name="minCircle" CornerRadius="360" Width="120" Height="120" BorderBrush="black" BorderThickness="2" 
                                 Opacity="0.4" RenderTransformOrigin="0.5,0.5" Background="{StaticResource bgBrush}">
                             <Border.RenderTransform>
                                 <TransformGroup>
@@ -169,11 +169,11 @@
                                 </LinearGradientBrush>
                             </Border.Background>-->
                         </Border>
-                        <dw:Arc x:Name="FillArea" ArcThickness="0.2" ArcThicknessUnit="Percent" Width="85" Height="85" 
+                        <dw:Arc x:Name="FillArea" ArcThickness="0.2" ArcThicknessUnit="Percent" Width="100" Height="100" 
                                     StartAngle="0" EndAngle="{Binding Progress, Converter={StaticResource progressConverter}}" 
                                 Stretch="None" Fill="{Binding State, Converter={StaticResource stateColor}}"/>
                         <dw:Arc x:Name="ShowArea" ArcThickness="0.05"  ArcThicknessUnit="Percent"
-                                    StartAngle="0" EndAngle="360" Width="90" Height="90" Stretch="None" Opacity="0.5" RenderTransformOrigin="0.5,0.5">
+                                    StartAngle="0" EndAngle="360" Width="105" Height="105" Stretch="None" Opacity="0.5" RenderTransformOrigin="0.5,0.5">
                             <dw:Arc.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>

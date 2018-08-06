@@ -14,6 +14,6 @@
         <Label Grid.Row="0" Content="A线生产进度" FontSize="30"
                Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
         <ContentControl Grid.Row="1" Content="{Binding LineInfos}" ContentTemplate="{StaticResource ALine}"
-                        MinWidth="400" />
+                        MinWidth="400"  Margin="0,20,0,0"/>
     </Grid>
 </UserControl>
